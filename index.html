@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi esposa &lt;3</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div id="ui-container">
+        <h1 id="title">Feliz San Valentín, mi nena preciosa &lt;3</h1>
+        <div id="date-counter">REMR 🐶 & MFOM 😺</div>
+        <div id="equation-overlay">
+            $$(x^2 + \frac{9}{4}y^2 + z^2 - 1)^3 - x^2z^3 - \frac{9}{200}y^2z^3 = 0$$
+        </div>
+
+        <div id="buttons-container">
+            <button class="glass-btn" onclick="toggleMusic()">🎵 Música</button>
+            <button class="glass-btn" onclick="openModal('gallery-modal')">📸 Recuerdos</button>
+            <button class="glass-btn" onclick="openModal('letters-modal')">💌 Carta</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="gallery-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-btn" onclick="closeModal('gallery-modal')">&times;</span>
+            <h2>Nuestros Momentos</h2>
+            <div class="gallery-container">
+                <div class="slide fade">
+                    <img src="img/foto1.png" alt="Foto 1">
+                    <div class="caption">Nuestro primer ñam ñam 🥴</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img/foto2.png" alt="Foto 2">
+                    <div class="caption">Un día normal en la escuela 🏫</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img/foto3.png" alt="Foto 3">
+                    <div class="caption">Cita navideña 🎄</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img/foto4.png" alt="Foto 4">
+                    <div class="caption">Nuestra primera excursión 🚌</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img/foto5.png" alt="Foto 5">
+                    <div class="caption">Primer concierto juntos: Simple Plan 🎸</div>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="letters-modal" class="modal hidden">
+        <div class="modal-content glass-panel scrollable">
+            <span class="close-btn" onclick="closeModal('letters-modal')">&times;</span>
+            <h2>Mis Carta para Ti 💌</h2>
+
+            <div class="letter-section">
+                <h3>De: Tu niño</h3>
+                <h3>Para: Mi polola</h3>
+                <p>Hola, mi amor. Hoy, en este San Valentín, quería regalarte algo diferente, algo que intentara
+                    capturar, aunque fuera un poquito, la inmensidad de lo que siento por ti.</p>
+                <p>A veces me detengo a pensar y me doy cuenta de que no hay ecuación matemática, ni algoritmo en el
+                    universo capaz de calcular la probabilidad de que dos almas como las nuestras se encontraran y, aún
+                    así, aunque matemáticamente sea casi imposible, yo tengo total certidumbre de que lo nuestro era un
+                    evento
+                    inevitable, porque el universo sabe que dos almas gemelas están destinadas a estar juntas por toda
+                    la eternidad, unidas
+                    por su hilo rojo ❤️.
+                    Eres mi evento universal, mi milagro cotidiano. Desde aquel primer beso, mi universo dejó de ser un
+                    lugar frío y vasto para convertirse en un hogar cálido, porque mi hogar eres tú.</p>
+                <p>Me has enseñado que el amor no es solo mariposas (o "ñam ñam" :P), es construir algo sólido día a
+                    día. Es ser equipo, es ser cómplices, es ser ese "nosotros" indestructible contra el mundo. Eres la
+                    niña más brillante, la más pro, la dueña absoluta de mis suspiros y de mis mejores sonrisas.</p>
+                <p>Prometo seguir siendo tu fan número uno en cada logro, tu refugio en cada tormenta y tu compañero de
+                    locuras (y de vida) por toda la eternidad. Gracias por elegirme, por hacerme el niño más
+                    afortunado de la
+                    galaxia y por permitirme caminar a tu lado.</p>
+                <p>Que este corazón digital te recuerde siempre que, pase lo que pase, mi corazón real late única y
+                    exclusivamente por y para ti.</p>
+                <p class="signature">Te amo infinitamente, princesa <3<br>De tu esposo perdidamente enamorado 🐶💕.</p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="canvas-container"></div>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
