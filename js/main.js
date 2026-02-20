@@ -87,21 +87,39 @@ function init() {
     rawPoints.sort((a, b) => a.y - b.y);
     heartPoints = rawPoints;
 
+    console.log(`Puntos generados: ${heartPoints.length}`);
+
     particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(heartPoints.length * 3);
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     particlesGeometry.setDrawRange(0, 0);
 
-    const sprite = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
+    // Generar textura programáticamente para evitar problemas de carga
+    const getTexture = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 32;
+        canvas.height = 32;
+        const context = canvas.getContext('2d');
+        const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+        gradient.addColorStop(0, 'rgba(255,255,255,1)');
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 32, 32);
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        return texture;
+    };
+
     particlesMaterial = new THREE.PointsMaterial({
         color: 0xff0040,
-        size: 0.06, // Un poco más grande
-        map: sprite,
-        alphaTest: 0.5,
+        size: 0.1,
+        map: getTexture(),
+        alphaTest: 0.1,
         transparent: true,
         opacity: 0.9,
         sizeAttenuation: true,
-        blending: THREE.AdditiveBlending
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
     });
 
     particlesSystem = new THREE.Points(particlesGeometry, particlesMaterial);
